@@ -19,4 +19,27 @@ function searchSubtitles(query) {
         .then(data => {
             document.getElementById('results').innerHTML += `<h2>OpenSubtitles tulemused:</h2>${data}`;
         });
-}
+} 
+fetch(subclubUrl)
+    .then(response => {
+        console.log('SubClub response:', response);
+        return response.text();
+    })
+    .then(data => {
+        document.getElementById('results').innerHTML = `<h2>SubClub tulemused:</h2>${data}`;
+    })
+    .catch(error => {
+        console.error('Error fetching SubClub data:', error);
+    });
+
+fetch(opensubtitlesUrl)
+    .then(response => {
+        console.log('OpenSubtitles response:', response);
+        return response.text();
+    })
+    .then(data => {
+        document.getElementById('results').innerHTML += `<h2>OpenSubtitles tulemused:</h2>${data}`;
+    })
+    .catch(error => {
+        console.error('Error fetching OpenSubtitles data:', error);
+    });
